@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrito | WildPet</title>
+
+  <!-- Fuente -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="ShoppingCart.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <img class="logo" src="img2/logo.png" alt="WildPet">
+
+    <nav class="nav">
+      <a href="Homepage.html">Inicio</a>
+      <a href="DogProducts.html">Perros</a>
+      <a href="Gatos.html">Gatos</a>
+      <a href="Pajaros.html">Pájaros</a>
+      <a href="Peces.html">Peces</a>
+    </nav>
+
+    <div class="icons">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-regular fa-user"></i>
+      <i class="fa-solid fa-cart-shopping active-icon"></i>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <div class="container">
+
+    <h1 class="title">Tu Cesta de la Compra</h1>
+
+    <div class="layout">
+
+      <!-- CESTA -->
+      <section class="panel">
+        <h2 class="panel-title">Tu Cesta</h2>
+
+        <article class="item">
+          <img class="item__img" src="img2/d2.png">
+          <div class="item__info">
+            <h3>Pienso Premium<br>para Perros<br>Adultos</h3>
+            <p class="unit">€25.50</p>
+            <p class="sub">Subtotal: €25.50</p>
+          </div>
+          <div class="item__qty">
+            <button class="qty-btn">−</button>
+            <span class="qty">1</span>
+            <button class="qty-btn">+</button>
+            <button class="trash"><i class="fa-regular fa-trash-can"></i></button>
+          </div>
+        </article>
+
+        <hr class="sep">
+
+        <article class="item">
+          <img class="item__img" src="img2/d1.png">
+          <div class="item__info">
+            <h3>Juguete de Pelota<br>Resistente</h3>
+            <p class="unit">€9.99</p>
+            <p class="sub">Subtotal: €19.98</p>
+          </div>
+          <div class="item__qty">
+            <button class="qty-btn">−</button>
+            <span class="qty">2</span>
+            <button class="qty-btn">+</button>
+            <button class="trash"><i class="fa-regular fa-trash-can"></i></button>
+          </div>
+        </article>
+
+        <hr class="sep">
+
+        <article class="item">
+          <img class="item__img" src="img2/d6.png">
+          <div class="item__info">
+            <h3>Cama Ortopédica<br>para Perros</h3>
+            <p class="unit">€75.00</p>
+            <p class="sub">Subtotal: €75.00</p>
+          </div>
+          <div class="item__qty">
+            <button class="qty-btn">−</button>
+            <span class="qty">1</span>
+            <button class="qty-btn">+</button>
+            <button class="trash"><i class="fa-regular fa-trash-can"></i></button>
+          </div>
+        </article>
+      </section>
+
+      <!-- RESUMEN -->
+      <aside class="panel summary">
+        <h2 class="panel-title">Resumen del<br>Pedido</h2>
+
+        <div class="rows">
+          <div class="row"><span>Subtotal</span><strong>€120.48</strong></div>
+          <div class="row"><span>Envío Estimado</span><strong>€5.99</strong></div>
+        </div>
+
+        <hr class="sep">
+
+        <div class="row total"><span>Total</span><strong>€126.47</strong></div>
+
+        <h3 class="pay-title">Métodos de Pago</h3>
+
+        <div class="pay">
+          <div class="paybox"><img src="img/visa.png"></div>
+          <div class="paybox"><img src="img/MasterCard.png"></div>
+          <div class="paybox blue"><img src="img/PayPal.png"></div>
+        </div>
+
+        <button class="checkout">Tramitar Pedido</button>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-inner">
+  
+      <div class="footer-left">
+        <span>Enlaces Rápidos</span>
+        <span>Categorías</span>
+      </div>
+  
+      <div class="footer-right">
+        <i class="fa-brands fa-facebook-f" aria-label="Facebook" title="Facebook"></i>
+        <i class="fa-brands fa-instagram" aria-label="Instagram" title="Instagram"></i>
+        <i class="fa-brands fa-x-twitter" aria-label="X" title="X"></i>
+      </div>
+  
+    </div>
+  </footer>
+</body>
+</html>

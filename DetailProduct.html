@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalle de Producto | WildPet</title>
+
+  <!-- Fuente -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="DetailProduct.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <img class="logo" src="img2/logo.png" alt="WildPet">
+
+    <nav class="nav">
+      <a href="Homepage.html">Inicio</a>
+      <a class="active" href="DogProducts.html">Perros</a>
+      <a href="Gatos.html">Gatos</a>
+      <a href="Pajaros.html">Pájaros</a>
+      <a href="Peces.html">Peces</a>
+    </nav>
+
+    <div class="icons">
+      <i class="fa-solid fa-magnifying-glass" title="Buscar"></i>
+      <i class="fa-regular fa-user" title="Cuenta"></i>
+      <i class="fa-solid fa-cart-shopping" title="Carrito"></i>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <div class="container">
+
+    <div class="product-layout">
+      <!-- GALERÍA -->
+      <section class="gallery">
+        <div class="gallery-main">
+          <button class="navbtn left" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+
+          <img class="main-img" src="img2/d1.png" alt="Producto">
+
+          <button class="navbtn right" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+
+          <button class="zoom" aria-label="Zoom"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="thumbs" aria-label="Miniaturas">
+          <button class="thumb is-active"><img src="img2/d1.png" alt=""></button>
+          <button class="thumb"><img src="img2/kong1.png" alt=""></button>
+          <button class="thumb"><img src="img2/kong2.png" alt=""></button>
+          <button class="thumb"><img src="img2/kong3.png" alt=""></button>
+        </div>
+      </section>
+
+      <!-- INFO -->
+      <section class="info">
+        <div class="brandline">Kong</div>
+        <h1 class="prod-title">Kong Classic portagolosinas rojo<br>para perros</h1>
+
+        <div class="rating">
+          <span class="stars">★★★★★</span>
+          <span class="score">(4.8)</span>
+          <a class="link" href="#">40 opiniones</a>
+          <span class="dot">|</span>
+          <a class="link" href="#desc">Ver descripción</a>
+        </div>
+
+        <div class="size-top">
+          <div class="label">Talla: <strong>L</strong></div>
+          <a class="size-guide" href="#"><i class="fa-solid fa-ruler-combined"></i> Guía de tallas</a>
+        </div>
+
+        <div class="sizes">
+          <button class="size">XS <span>6.09€</span><em>-25% dto. 2ª ud.</em></button>
+          <button class="size">S <span>6.59€</span><em>-25% dto. 2ª ud.</em></button>
+          <button class="size">M <span>8.99€</span><em>-25% dto. 2ª ud.</em></button>
+
+          <button class="size is-selected">L <span>10.79€</span><em>-25% dto. 2ª ud.</em></button>
+          <button class="size">XL <span>16.99€</span><em>-25% dto. 2ª ud.</em></button>
+          <button class="size">XXL <span>24.79€</span><em>-25% dto. 2ª ud.</em></button>
+        </div>
+
+        <div class="price">10.79€</div>
+
+        <div class="buyrow">
+          <select class="qty" aria-label="Cantidad">
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+          </select>
+
+          <button class="add">Añadir al carrito</button>
+        </div>
+
+        <div class="promo">
+          <div class="promo-top">
+            <i class="fa-solid fa-tag"></i>
+            <strong>¡No te pierdas esta oferta!</strong>
+          </div>
+          <p>-25% dto. 2ª ud. con cupón - en casi toda la web (alimentación, accesorios y productos de higiene)</p>
+
+          <div class="coupon">
+            <span>Cupón:</span>
+            <span class="code">HADRI25</span>
+            <button class="copy"><i class="fa-regular fa-copy"></i> Copiar</button>
+          </div>
+
+          <a class="link small" href="#">Ver condiciones</a>
+        </div>
+
+        <div class="ship">
+          <h3>Opciones de envío</h3>
+
+          <div class="ship-item">
+            <i class="fa-solid fa-store"></i>
+            <div>
+              <strong>Recogida en tienda con Click &amp; Collect</strong>
+              <div class="ok"><i class="fa-solid fa-circle-check"></i> Disponible <span>Podrás recoger tu pedido en 24-48 horas GRATIS</span></div>
+            </div>
+          </div>
+
+          <div class="ship-item">
+            <i class="fa-solid fa-truck"></i>
+            <div>
+              <strong>Entrega a domicilio</strong>
+              <div class="ok"><i class="fa-solid fa-circle-check"></i> Disponible <span>Te llegará en 1-2 días hábiles GRATIS a partir de 49€</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- DESCRIPCIÓN -->
+    <section id="desc" class="desc">
+      <button class="desc-head" type="button">
+        <span>Descripción del producto</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+
+      <div class="desc-body">
+        <p>
+          El Kong Classic, el juguete para perros definitivo, ha sido el estándar de oro durante más de cuarenta años.
+          Hecho de caucho natural duradero e impredeciblemente rebotador, satisface la necesidad instintiva de masticar.
+        </p>
+
+        <p><strong>Características principales:</strong></p>
+        <ul>
+          <li>Caucho natural duradero: Resiste la masticación intensa.</li>
+          <li>Rebote impredecible: Ideal para juegos de persecución y búsqueda.</li>
+          <li>Rellenable: Se puede rellenar con snacks para prolongar la diversión.</li>
+          <li>Beneficios dentales: Ayuda a limpiar los dientes y masajear las encías.</li>
+          <li>Reduce el aburrimiento: Estimula la mente y evita la ansiedad por separación.</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- FOOTER  -->
+<footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span>Enlaces Rápidos</span>
+        <span>Categorías</span>
+      </div>
+  
+      <div class="footer-right">
+        <i class="fa-brands fa-facebook-f"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-x-twitter"></i>
+      </div>
+    </div>
+  </footer>
+  
+  </body>
+  </html>
