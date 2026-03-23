@@ -8,3 +8,6 @@ Proyecto de TFG: Tienda online dinámica de productos para mascotas.
 
 ## Flujo de Navegación
 Homepage -> Catálogos por especie -> Detalle de Producto -> Carrito -> Pasarela de pago
+
+## Despliegue Local
+Requiere entorno Apache y MySQL activo mediante XAMPP en entorno local htdocs.
