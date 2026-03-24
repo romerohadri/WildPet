@@ -11,3 +11,8 @@ Homepage -> Catálogos por especie -> Detalle de Producto -> Carrito -> Pasarela
 
 ## Despliegue Local
 Requiere entorno Apache y MySQL activo mediante XAMPP en entorno local htdocs.
+
+## Checklist Inicial
+- [x] Estructura Frontend
+- [ ] Base de Datos Relacional
+- [ ] Sesiones de Usuario
