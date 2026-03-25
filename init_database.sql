@@ -13,3 +13,12 @@ CREATE TABLE categorias (
     nombre VARCHAR(50) NOT NULL,
     slug VARCHAR(50) UNIQUE NOT NULL
 );
+
+CREATE TABLE productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(150) NOT NULL,
+    descripcion TEXT,
+    precio DECIMAL(10,2) NOT NULL,
+    imagen VARCHAR(255),
+    stock INT DEFAULT 0
+);
