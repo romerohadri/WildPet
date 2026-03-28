@@ -60,3 +60,12 @@ CREATE TABLE usuario_facturacion (
     direccion VARCHAR(255),
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
+
+CREATE TABLE usuario_envio (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    direccion VARCHAR(255),
+    ciudad VARCHAR(100),
+    codigo_postal VARCHAR(10),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
