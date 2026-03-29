@@ -72,3 +72,5 @@ CREATE TABLE usuario_envio (
 
 CREATE INDEX idx_productos_categoria ON productos(categoria_id);
 CREATE INDEX idx_usuarios_email ON usuarios(email);
+
+-- Fin del esquema relacional de la plataforma WildPet v1.0
