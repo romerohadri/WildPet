@@ -69,3 +69,6 @@ CREATE TABLE usuario_envio (
     codigo_postal VARCHAR(10),
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
+
+CREATE INDEX idx_productos_categoria ON productos(categoria_id);
+CREATE INDEX idx_usuarios_email ON usuarios(email);
