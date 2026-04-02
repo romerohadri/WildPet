@@ -159,3 +159,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 </body>
 </html>
+
+// Validación de campos obligatorios
+if(empty($email) || empty($password)) { $error = "Campos obligatorios"; }
