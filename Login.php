@@ -165,3 +165,6 @@ if(empty($email) || empty($password)) { $error = "Campos obligatorios"; }
 
 // Autenticación por correo electrónico
 $sql = "SELECT * FROM usuarios WHERE email = ?";
+
+// Inicialización de identificadores de sesión
+session_start(); $_SESSION["usuario_id"] = $usuario["id"];
