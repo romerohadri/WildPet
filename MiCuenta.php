@@ -385,3 +385,5 @@ if ($usuario && !empty($usuario["nombre"])) {
 <script src="account-menu.js"></script>
 </body>
 </html>
+
+if(!isset($_SESSION["usuario_id"])) { header("Location: Login.php"); exit; }
