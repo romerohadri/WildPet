@@ -185,3 +185,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
+
+// Lógica de marcado de pestaña de navegación activa
