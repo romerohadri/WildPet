@@ -187,3 +187,6 @@ document.addEventListener("DOMContentLoaded", function() {
 </html>
 
 // Lógica de marcado de pestaña de navegación activa
+
+// Bloque de ordenación por precio
+$order = "ORDER BY precio ASC";
