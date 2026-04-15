@@ -23,3 +23,13 @@ $result = $stmt->get_result();
 <?php endwhile; ?>
 </body>
 </html>
+<?php 
+// P6.3: Lógica para actualizar cantidad
+if (isset($_POST["actualizar"])) {
+    $carrito_id = $_POST["carrito_id"];
+    $cantidad = $_POST["cantidad"];
+    $stmt = $conn->prepare("UPDATE carrito SET cantidad = ? WHERE id = ?");
+    $stmt->bind_param("ii", $cantidad, $carrito_id);
+    $stmt->execute();
+    header("Location: ShoppingCart.php");
+}
