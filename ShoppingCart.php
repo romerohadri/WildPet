@@ -39,3 +39,8 @@ if (isset($_POST["eliminar"])) {
     $conn->query("DELETE FROM carrito WHERE id = $carrito_id");
     header("Location: ShoppingCart.php");
 }
+
+// P6.5: Cálculo de totales en ShoppingCart.php
+$subtotal = 0; // Aquí deberías sumar los productos
+$envio = 5.99;
+$total = $subtotal + $envio;
