@@ -33,3 +33,9 @@ if (isset($_POST["actualizar"])) {
     $stmt->execute();
     header("Location: ShoppingCart.php");
 }
+
+if (isset($_POST["eliminar"])) {
+    $carrito_id = $_POST["carrito_id"];
+    $conn->query("DELETE FROM carrito WHERE id = $carrito_id");
+    header("Location: ShoppingCart.php");
+}
