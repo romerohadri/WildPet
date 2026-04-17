@@ -44,3 +44,5 @@ if (isset($_POST["eliminar"])) {
 $subtotal = 0; // Aquí deberías sumar los productos
 $envio = 5.99;
 $total = $subtotal + $envio;
+
+if ($result->num_rows == 0) { echo "<p>Tu carrito está vacío.</p>"; }
