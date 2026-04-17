@@ -46,3 +46,8 @@ $envio = 5.99;
 $total = $subtotal + $envio;
 
 if ($result->num_rows == 0) { echo "<p>Tu carrito está vacío.</p>"; }
+<form method="POST">
+    <input type="text" name="tarjeta" placeholder="Número de tarjeta">
+    <input type="text" name="ccv" placeholder="CCV">
+    <button type="submit">Validar Pago</button>
+</form>
