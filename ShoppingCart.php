@@ -51,3 +51,4 @@ if ($result->num_rows == 0) { echo "<p>Tu carrito está vacío.</p>"; }
     <input type="text" name="ccv" placeholder="CCV">
     <button type="submit">Validar Pago</button>
 </form>
+<a href="DireccionEnvio.php">Continuar a Envío</a>
