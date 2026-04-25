@@ -1,3 +1,7 @@
-<?php include('conexion.php'); ?>
-
-if(!isset($_SESSION["usuario_id"])) { header("Location: Login.php"); exit; }
+<?php 
+include("conexion.php"); 
+session_start();
+echo "<h1>Mis Pedidos</h1>";
+$usuario_id = $_SESSION["usuario_id"];
+$res = $conn->query("SELECT * FROM pedidos WHERE usuario_id = $usuario_id"); 
+?>
