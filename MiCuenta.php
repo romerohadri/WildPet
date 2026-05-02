@@ -7,3 +7,7 @@
 <div class="account-container"></div>
 </body>
 </html>
+<form method="POST">
+    <input type="text" name="nombre" placeholder="Nombre">
+    <button type="submit" name="guardar">Guardar</button>
+</form>
