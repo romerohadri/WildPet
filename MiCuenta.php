@@ -11,3 +11,4 @@
     <input type="text" name="nombre" placeholder="Nombre">
     <button type="submit" name="guardar">Guardar</button>
 </form>
+<input type="text" name="nif" placeholder="DNI/NIF">
