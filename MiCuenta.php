@@ -12,3 +12,7 @@
     <button type="submit" name="guardar">Guardar</button>
 </form>
 <input type="text" name="nif" placeholder="DNI/NIF">
+<div class="billing">
+    <h3>Facturación</h3>
+    <input type="text" name="direccion_fac" placeholder="Dirección">
+</div>
