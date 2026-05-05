@@ -16,3 +16,4 @@
     <h3>Facturación</h3>
     <input type="text" name="direccion_fac" placeholder="Dirección">
 </div>
+<input type="text" name="tel2_fac" placeholder="Segundo teléfono">
