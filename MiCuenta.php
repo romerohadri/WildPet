@@ -17,3 +17,7 @@
     <input type="text" name="direccion_fac" placeholder="Dirección">
 </div>
 <input type="text" name="tel2_fac" placeholder="Segundo teléfono">
+<div class="shipping">
+    <h3>Envío</h3>
+    <input type="text" name="direccion_env" placeholder="Dirección">
+</div>
