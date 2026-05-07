@@ -21,3 +21,4 @@
     <h3>Envío</h3>
     <input type="text" name="direccion_env" placeholder="Dirección">
 </div>
+<input type="text" name="tel2_env" placeholder="Segundo teléfono">
