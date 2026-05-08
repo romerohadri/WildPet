@@ -22,3 +22,4 @@
     <input type="text" name="direccion_env" placeholder="Dirección">
 </div>
 <input type="text" name="tel2_env" placeholder="Segundo teléfono">
+<?php if(isset($_POST['guardar'])) echo "Datos guardados correctamente"; ?>
