@@ -183,10 +183,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+<?php include("footer.php"); ?>
 </body>
 </html>
-
-// Lógica de marcado de pestaña de navegación activa
-
-// Bloque de ordenación por precio
-$order = "ORDER BY precio ASC";
