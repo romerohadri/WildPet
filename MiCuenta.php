@@ -5,6 +5,7 @@
 <body>
 <h1>Mi Cuenta</h1>
 <div class="account-container"></div>
+<?php include("footer.php"); ?>
 </body>
 </html>
 <form method="POST">
