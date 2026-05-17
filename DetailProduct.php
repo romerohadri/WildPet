@@ -197,6 +197,3 @@ $stmt->close();
 <script src="account-menu.js"></script>
 </body>
 </html>
-
-// Captura de identificador
-$id = intval($_GET["id"]);

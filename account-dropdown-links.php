@@ -1,3 +1,6 @@
-<?php // Enlaces dinámicos del dropdown ?>
-
-if(isset($_SESSION["usuario_id"])) { // Ocultar pasarela de login }
+<?php if (!isset($_SESSION['usuario_id'])): ?>
+  <a href="Login.php">Acceder</a>
+<?php endif; ?>
+<a href="MiCuenta.php">Mi Cuenta</a>
+<a href="Pedidos.php">Pedidos</a>
+<a href="Logout.php">Cerrar Sesión</a>
