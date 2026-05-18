@@ -189,12 +189,5 @@ unset($_SESSION['shipping_data']);
 
 <?php include('footer.php'); ?>
 <script src="account-menu.js"></script>
-<?php include("footer.php"); ?>
 </body>
 </html>
-<?php 
-if(isset($_POST['observaciones'])) {
-    $obs = $_POST['observaciones'];
-    $conn->query("UPDATE pedidos SET observaciones = '$obs' WHERE id = 1");
-}
-?>

@@ -58,7 +58,7 @@ $stmt->close();
 
     <div class="icons">
       <a href="MisFavoritos.php" title="Mis Favoritos" aria-label="Mis Favoritos"><i class="fa-regular fa-heart"></i></a>
-      <a href="Search.php" title="Buscar" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></a>
+      <a href="Perros.php" title="Buscar" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></a>
       <div class="account-menu">
         <button class="account-toggle" aria-label="Cuenta"><i class="fa-regular fa-user"></i></button>
         <div class="account-dropdown">
@@ -151,6 +151,5 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<?php include("footer.php"); ?>
 </body>
 </html>

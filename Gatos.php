@@ -175,6 +175,5 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <script src="account-menu.js"></script>
-<?php include("footer.php"); ?>
 </body>
 </html>

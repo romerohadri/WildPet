@@ -1,0 +1,126 @@
+CREATE TABLE categorias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(150) NOT NULL,
+    descripcion TEXT NOT NULL,
+    precio DECIMAL(10,2) NOT NULL,
+    imagen VARCHAR(255),
+    stock INT NOT NULL DEFAULT 0,
+    id_categoria INT NOT NULL,
+    destacado BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id)
+);
+
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    rol ENUM('cliente','admin') DEFAULT 'cliente'
+);
+
+
+CREATE TABLE carrito (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    id_producto INT NOT NULL,
+    cantidad INT NOT NULL DEFAULT 1,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
+    FOREIGN KEY (id_producto) REFERENCES productos(id)
+);
+
+
+CREATE TABLE pedidos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    total DECIMAL(10,2) NOT NULL,
+    estado ENUM('pendiente','pagado','enviado','entregado') DEFAULT 'pendiente',
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+);
+
+
+CREATE TABLE detalle_pedido (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_pedido INT NOT NULL,
+    id_producto INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio_unitario DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id),
+    FOREIGN KEY (id_producto) REFERENCES productos(id)
+);
+
+
+CREATE DATABASE wildpet;
+USE wildpet;
+
+CREATE TABLE categorias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(150) NOT NULL,
+    descripcion TEXT NOT NULL,
+    precio DECIMAL(10,2) NOT NULL,
+    imagen VARCHAR(255),
+    stock INT NOT NULL DEFAULT 0,
+    id_categoria INT NOT NULL,
+    destacado BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id)
+);
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    rol ENUM('cliente','admin') DEFAULT 'cliente'
+);
+
+CREATE TABLE carrito (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    id_producto INT NOT NULL,
+    cantidad INT NOT NULL DEFAULT 1,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
+    FOREIGN KEY (id_producto) REFERENCES productos(id)
+);
+
+CREATE TABLE pedidos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    total DECIMAL(10,2) NOT NULL,
+    estado ENUM('pendiente','pagado','enviado','entregado') DEFAULT 'pendiente',
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+);
+
+CREATE TABLE detalle_pedido (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_pedido INT NOT NULL,
+    id_producto INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio_unitario DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id),
+    FOREIGN KEY (id_producto) REFERENCES productos(id)
+);
+
+
+INSERT INTO categorias (nombre) VALUES
+('Perros'),
+('Gatos'),
+('Pájaros'),
+('Peces');
+
+INSERT INTO productos (nombre, descripcion, precio, imagen, stock, id_categoria, destacado) VALUES
+('Juguete Masticable para Cachorros', 'Juguete resistente para el desarrollo dental y diversión.', 12.50, 'img2/d1.png', 20, 1, TRUE),
+('Alimento Seco Premium para Perros', 'Receta rica en proteínas para una vida activa.', 35.99, 'img2/d2.png', 15, 1, TRUE),
+('Collar de Cuero Ajustable', 'Diseño duradero y cómodo para uso diario.', 24.99, 'img2/d3.png', 10, 1, FALSE),
+('Dispensador Automático de Golosinas', 'Ideal para entrenar y recompensar a tu perro.', 49.00, 'img2/d4.png', 8, 1, FALSE);

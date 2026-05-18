@@ -1,0 +1,152 @@
+:root{
+    --green:#86c440;
+    --text:#111827;
+    --muted:#6b7280;
+    --border:#e5e7eb;
+  }
+  
+  *{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+  }
+  
+  body{
+    font-family:"Inter", system-ui, Arial, sans-serif;
+    background:#ffffff;            
+    color:var(--text);
+    min-height:100vh;
+  }
+  
+ 
+  .top-logo{
+    position:absolute;
+    top:24px;
+    left:24px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--green);
+    font-weight:800;
+  }
+  
+  .spark{
+    font-size:18px;
+  }
+  
+  .brand{
+    font-style:italic;
+    font-size:18px;
+  }
+  
+  .login-wrapper{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  
+  .login-card{
+    width:360px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:26px 26px 22px;
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+  }
+  
+  .login-card h1{
+    font-size:26px;
+    font-weight:800;
+    text-align:center;
+    margin-bottom:8px;
+  }
+  
+  .subtitle{
+    text-align:center;
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:20px;
+  }
+  
+  label{
+    display:block;
+    font-size:13px;
+    margin-bottom:6px;
+    margin-top:14px;
+  }
+  
+  .input{
+    position:relative;
+  }
+  
+  .input i{
+    position:absolute;
+    left:12px;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:13px;
+    color:#9ca3af;
+  }
+  
+  .input input{
+    width:100%;
+    height:40px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    padding:0 12px 0 36px;
+    font-size:13px;
+  }
+  
+  .input input:focus{
+    outline:none;
+    border-color:var(--green);
+    box-shadow:0 0 0 3px rgba(134,196,64,.2);
+  }
+  
+  .check{
+    display:flex;
+    gap:10px;
+    margin:14px 0 18px;
+    font-size:12px;
+    color:var(--muted);
+  }
+  
+  .btn{
+    width:100%;
+    height:40px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  
+  .btn.primary{
+    background:var(--green);
+    color:#fff;
+    border:none;
+    margin-bottom:12px;
+  }
+  
+  .btn.secondary{
+    background:#fff;
+    border:1px solid var(--border);
+    color:#111111;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  
+  .register{
+    margin-top:14px;
+    text-align:center;
+    font-size:12px;
+    color:var(--muted);
+  }
+  
+  .register a{
+    color:#111827;
+    font-weight:600;
+    text-decoration:none;
+  }

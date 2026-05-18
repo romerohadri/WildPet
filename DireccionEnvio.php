@@ -191,6 +191,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <?php include('footer.php'); ?>
 <script src="account-menu.js"></script>
-<?php include("footer.php"); ?>
 </body>
 </html>
