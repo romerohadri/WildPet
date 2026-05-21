@@ -1,198 +1,217 @@
-# 🐾 WildPet - Tienda Online de Productos para Mascotas
+```md
+# WildPet - Tienda Online de Productos para Mascotas
 
 ## Descripción
-WildPet es una tienda online completamente funcional para comprar productos para mascotas. Dispone de categorías para Perros, Gatos, Pájaros y Peces, con un sistema de carrito de compras y autenticación de usuarios.
+WildPet es una tienda online funcional desarrollada como proyecto TFG, orientada a la venta de productos para mascotas.  
+Incluye catálogo por categorías (Perros, Gatos, Pájaros y Peces), autenticación de usuarios, carrito de compra, favoritos, gestión de cuenta y registro de pedidos.
 
 ---
 
-## 📋 Requisitos Previos
-
-- **PHP 7.0+** (con soporte para mysqli)
-- **MySQL 5.7+**
-- **Servidor web** (Apache, Nginx, etc.)
-- **Control de versiones** (recomendado: Git)
+## Objetivo del proyecto
+Diseñar e implementar una aplicación web ecommerce aplicando conocimientos de:
+- Desarrollo backend con PHP
+- Gestión de base de datos con MariaDB/MySQL
+- Estructuración de interfaz con HTML/CSS
+- Interacción en frontend con JavaScript
+- Control de versiones con Git/GitHub
 
 ---
 
-## 🚀 Instalación
+## Tecnologías utilizadas
+- Backend: PHP (mysqli)
+- Base de datos: MariaDB / MySQL
+- Frontend: HTML5, CSS3, JavaScript
+- Servidor local: XAMPP (Apache + MariaDB)
+- Control de versiones: Git + GitHub
 
-### 1. Preparar el entorno
-Si estás en **macOS**, necesitas un servidor web local. Las opciones más comunes son:
+---
 
-- **Homebrew + PHP + MySQL**
-- **Docker**
-- **MAMP/XAMPP**
+## Requisitos previos
 
-Para Mac recomendamos **Homebrew**:
-```bash
-brew install php mysql
-mysql.server start
-```
+### Hardware mínimo
+- CPU de 2 núcleos
+- 4 GB RAM
+- 2 GB libres en disco
 
-### 2. Crear la carpeta del proyecto
-```bash
-mkdir -p ~/Sites/wildpet
-cd ~/Sites/wildpet
-```
+### Hardware recomendado
+- CPU de 4 núcleos
+- 8 GB RAM
+- SSD
 
-### 3. Copiar los archivos de WildPet
-Coloca todos los archivos del proyecto en la carpeta anterior.
+### Software
+- XAMPP instalado (Apache + MariaDB + PHP)
+- Navegador moderno (Chrome, Firefox, Edge)
+- Git (opcional, recomendado)
 
-### 4. Crear la base de datos
+---
 
-#### Opción A: Usando phpMyAdmin
-1. Abre phpMyAdmin en tu navegador
-2. Ve a la pestaña "SQL"
-3. Abre el archivo `init_database.sql` y copia su contenido
-4. Pégalo en phpMyAdmin y ejecuta (botón "Ejecutar")
+## Instalación (XAMPP)
 
-#### Opción B: Usando terminal MySQL
-```bash
-mysql -u root -p < init_database.sql
-```
+### 1) Colocar el proyecto en htdocs
+Copia la carpeta del proyecto dentro de:
 
-#### Opción C: Manualmente en MySQL
-```bash
-mysql -u root -p
-```
+- macOS: `/Applications/XAMPP/xamppfiles/htdocs/wildpet`
+- Windows: `C:\xampp\htdocs\wildpet`
+- Linux: `/opt/lampp/htdocs/wildpet`
 
-Luego pega el contenido del archivo `init_database.sql` en la terminal.
+### 2) Iniciar servicios
+Abre XAMPP y arranca:
+- Apache
+- MySQL (MariaDB)
 
-### 5. Configurar la conexión
-Verifica que `conexion.php` tenga los datos correctos:
+### 3) Crear/importar base de datos
+Entra en `http://localhost/phpmyadmin` y:
+
+- Crea la base de datos `wildpet`
+- Importa el archivo `init_database.sql`
+
+### 4) Revisar conexión
+Verifica en `conexion.php`:
 
 ```php
 $host = "localhost";
 $usuario = "root";
-$contrasena = "";  // Modifica si tienes contraseña
+$contrasena = "";
 $bd = "wildpet";
 ```
 
-### 6. Configurar el servidor web
+En algunos equipos Windows/Linux el usuario/contraseña puede variar según la configuración local de XAMPP.
 
-#### Si usas Apache:
-Edita el archivo de configuración de Apache para que apunte a la carpeta de WildPet.
+### 5) Ejecutar proyecto
+Abre en navegador:
 
-#### Si usas PHP incorporado:
-```bash
-cd ~/Sites/wildpet
-php -S localhost:8000
+- Inicio: `http://localhost/wildpet/Homepage.php`
+
+---
+
+## Acceso de prueba
+Si en tu SQL hay usuario demo cargado:
+
+- Email: `prueba@wildpet.com`
+- Contraseña: `123456`
+
+Si no funciona, revisa en la tabla `usuarios` de tu base de datos.
+
+---
+
+## URLs principales
+- Inicio: `http://localhost/wildpet/Homepage.php`
+- Perros: `http://localhost/wildpet/Perros.php`
+- Gatos: `http://localhost/wildpet/Gatos.php`
+- Pájaros: `http://localhost/wildpet/Pajaros.php`
+- Peces: `http://localhost/wildpet/Peces.php`
+- Detalle producto: `http://localhost/wildpet/DetailProduct.php?id=1`
+- Buscar: `http://localhost/wildpet/Search.php`
+- Carrito: `http://localhost/wildpet/ShoppingCart.php`
+- Favoritos: `http://localhost/wildpet/MisFavoritos.php`
+- Mi cuenta: `http://localhost/wildpet/MiCuenta.php`
+- Pedidos: `http://localhost/wildpet/Pedidos.php`
+- Login: `http://localhost/wildpet/Login.php`
+
+---
+
+## Estructura del proyecto
+
+```text
+wildpet/
+├── Homepage.php
+├── Perros.php
+├── Gatos.php
+├── Pajaros.php
+├── Peces.php
+├── DetailProduct.php
+├── Search.php
+├── ShoppingCart.php
+├── DireccionEnvio.php
+├── Checkout.php
+├── MisFavoritos.php
+├── MiCuenta.php
+├── Pedidos.php
+├── Login.php
+├── Register.php
+├── Logout.php
+├── add_to_cart.php
+├── add_favorites_to_cart.php
+├── conexion.php
+├── footer.php
+├── account-dropdown-links.php
+├── account-menu.css
+├── account-menu.js
+├── favorites.js
+├── Homepage.css
+├── DogProducts.css
+├── ShoppingCart.css
+├── Login.css
+├── init_database.sql
+├── img/
+└── img2/
 ```
 
 ---
 
-## 🔐 Acceso a la Tienda
-
-### Usuario de Prueba Incluido
-- **Email:** `prueba@wildpet.com`
-- **Contraseña:** `123456`
-
-### URLs Principales
-- **Inicio:** `http://localhost:8000/Homepage.php`
-- **Productos Perros:** `http://localhost:8000/DogProducts.php`
-- **Productos Gatos:** `http://localhost:8000/Gatos.php`
-- **Productos Pájaros:** `http://localhost:8000/Pajaros.php`
-- **Productos Peces:** `http://localhost:8000/Peces.php`
-- **Carrito:** `http://localhost:8000/ShoppingCart.php`
-- **Login:** `http://localhost:8000/Login.php`
+## Funcionalidades implementadas
+- Catálogo por categorías
+- Vista de detalle de producto
+- Sistema de búsqueda y filtros
+- Login, registro y cierre de sesión
+- Carrito de compra (añadir, editar cantidad, eliminar)
+- Favoritos y traspaso al carrito
+- Mi Cuenta (datos personales, facturación y envío)
+- Proceso de compra con dirección de envío
+- Confirmación y guardado de pedidos en BD
+- Historial de pedidos del usuario
+- Diseño responsive básico
 
 ---
 
-## 📁 Estructura del Proyecto
+## Flujo de uso recomendado
+1. Navegar por categorías.
+2. Ver detalle y añadir productos.
+3. Marcar favoritos (opcional).
+4. Ir al carrito y tramitar pedido.
+5. Introducir dirección de envío.
+6. Confirmar compra.
+7. Consultar pedidos en el perfil.
 
+---
+
+## Resolución de problemas
+
+### Error de conexión a BD
+- Verifica que MySQL esté iniciado en XAMPP.
+- Revisa `conexion.php`.
+- Comprueba que la base `wildpet` exista.
+
+### Página en blanco
+- Activa logs de PHP en XAMPP y revisa errores.
+- Asegúrate de no tener código roto al final de archivos `.php`.
+
+### 404 en rutas
+- Comprueba que usas URLs con `.php`.
+- Verifica nombre exacto de archivo (ej: `Perros.php`, no `DogProducts.php`).
+
+### Sesión/login no mantiene estado
+- Comprueba `session_start();` al inicio de cada página protegida.
+- Borra caché/cookies y prueba de nuevo.
+
+---
+
+## Nota de seguridad
+Este proyecto es académico. Para entorno real se recomienda:
+- Validación y saneado más estricto de inputs
+- Protección CSRF
+- Gestión robusta de errores
+- Control de permisos por rol
+- Configuración segura de servidor y sesiones
+
+---
+
+## Licencia
+Proyecto Intermodular - TFG DAW 2º Curso.
+
+---
+
+## Autor
+Hadrián Romero  Abelleira
+Repositorio: `https://github.com/romerohadri/WildPet`
 ```
-WildPet_HadriánRomero/
-├── Homepage.php           # Página principal
-├── DogProducts.php        # Productos perros
-├── Gatos.php              # Productos gatos
-├── Pajaros.php            # Productos pájaros
-├── Peces.php              # Productos peces
-├── DetailProduct.php      # Detalle de un producto
-├── ShoppingCart.php       # Carrito de compras
-├── Login.php              # Autenticación
-├── conexion.php           # Conexión a base de datos
-├── init_database.sql      # Script SQL inicial
-├── README.md              # Este archivo
-├── *.css                  # Estilos CSS
-├── img/                   # Imágenes generales
-└── img2/                  # Imágenes de productos
-```
-
----
-
-## 🔧 Funcionalidades Principales
-
-✅ **Catálogo de Productos** - Organizado por categorías (Perros, Gatos, Pájaros, Peces)  
-✅ **Detalle de Producto** - Información completa con precio, descripción y stock  
-✅ **Autenticación** - Sistema de login seguro con sesiones  
-✅ **Carrito de Compras** - Gestión dinámica del carrito desde la base de datos  
-✅ **Sistema de Base de Datos** - MySQL con relaciones bien definidas  
-✅ **Responsivo** - Diseño adaptable a dispositivos móviles  
-✅ **Interfaz Amigable** - Navegación intuitiva con iconos Font Awesome  
-
----
-
-## 🛠️ Próximas Mejoras (Sugerencias)
-
-- [ ] Sistema de registro de nuevos usuarios
-- [ ] Procesamiento real de pagos (Stripe, PayPal)
-- [ ] Gestión de ordenes y historial de compras
-- [ ] Panel de administración para gestionar productos
-- [ ] Sistema de búsqueda y filtros avanzados
-- [ ] Carrito persistente (localStorage)
-- [ ] Sistema de comentarios y reseñas
-- [ ] Envíos y tracking de pedidos
-- [ ] Notificaciones por email
-- [ ] Sistema de cupones y descuentos
-
----
-
-## 🐛 Resolución de Problemas
-
-### Error: "Error de conexión: Connection refused"
-**Solución:** Asegúrate de que MySQL está corriendo:
-```bash
-mysql.server start
-```
-
-### Error: "Base de datos no encontrada"
-**Solución:** Ejecuta nuevamente el script `init_database.sql`
-
-### Archivo no se carga (404)
-**Solución:** Verifica que el archivo existe y que la URL es correcta. Recuerda cambiar `.html` por `.php`
-
-### Login no funciona
-**Solución:** 
-1. Verifica que la base de datos esté creada y tenga usuarios
-2. Comprueba que `conexion.php` está bien configurado
-3. Asegúrate de que las sesiones están habilitadas en PHP
-
----
-
-## 📝 Notas Importantes
-
-- **Seguridad:** Este proyecto es educativo. Para producción, implementa medidas de seguridad adicionales (validación input, SQL injection prevention, CSRF tokens, etc.)
-- **Contraseñas:** Las contraseñas están hasheadas con bcrypt
-- **Base de datos:** Los datos de ejemplo se incluyen en `init_database.sql`
-- **Imágenes:** Las rutas de imágenes apuntan a `img/` e `img2/`. Asegúrate de que existan
-
----
-
-## 📞 Soporte
-
-Si tienes problemas:
-1. Revisa que todos los archivos `.php` estén en la misma carpeta
-2. Verifica que `conexion.php` está configurado correctamente
-3. Comprueba los permisos de carpetas
-4. Revisa los logs de error del servidor
-
----
-
-## 📄 Licencia
-
-Proyecto educativo - Trabajo de Fin de Grado  
-Autor: Hadrian Romero
-
----
-
-**¡Disfruta de WildPet! 🐾**
