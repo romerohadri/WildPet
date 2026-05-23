@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("conexion.php");
+include("csrf.php");
 
 if (!isset($_SESSION['usuario_id'])) {
     header("Location: Login.php?redirect=DireccionEnvio.php");
@@ -76,29 +77,34 @@ if (!isset($_SESSION["shipping_data"])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $shipping["nombre"] = trim($_POST["nombre"] ?? "");
-    $shipping["direccion"] = trim($_POST["direccion"] ?? "");
-    $shipping["ciudad"] = trim($_POST["ciudad"] ?? "");
-    $shipping["provincia"] = trim($_POST["provincia"] ?? "");
-    $shipping["codigo_postal"] = trim($_POST["codigo_postal"] ?? "");
-    $shipping["pais"] = trim($_POST["pais"] ?? "");
-    $shipping["telefono"] = trim($_POST["telefono"] ?? "");
-    $shipping["observaciones"] = trim($_POST["observaciones"] ?? "");
-
-    if (
-        $shipping["nombre"] === "" ||
-        $shipping["direccion"] === "" ||
-        $shipping["ciudad"] === "" ||
-        $shipping["provincia"] === "" ||
-        $shipping["codigo_postal"] === "" ||
-        $shipping["pais"] === "" ||
-        $shipping["telefono"] === ""
-    ) {
-        $error = "Completa todos los campos obligatorios de envío.";
+    if (!csrf_validate($_POST['csrf_token'] ?? '')) {
+        http_response_code(403);
+        $error = "Solicitud inválida. Recarga la página e inténtalo de nuevo.";
     } else {
-        $_SESSION["shipping_data"] = $shipping;
-        header("Location: Checkout.php");
-        exit;
+        $shipping["nombre"] = trim($_POST["nombre"] ?? "");
+        $shipping["direccion"] = trim($_POST["direccion"] ?? "");
+        $shipping["ciudad"] = trim($_POST["ciudad"] ?? "");
+        $shipping["provincia"] = trim($_POST["provincia"] ?? "");
+        $shipping["codigo_postal"] = trim($_POST["codigo_postal"] ?? "");
+        $shipping["pais"] = trim($_POST["pais"] ?? "");
+        $shipping["telefono"] = trim($_POST["telefono"] ?? "");
+        $shipping["observaciones"] = trim($_POST["observaciones"] ?? "");
+
+        if (
+            $shipping["nombre"] === "" ||
+            $shipping["direccion"] === "" ||
+            $shipping["ciudad"] === "" ||
+            $shipping["provincia"] === "" ||
+            $shipping["codigo_postal"] === "" ||
+            $shipping["pais"] === "" ||
+            $shipping["telefono"] === ""
+        ) {
+            $error = "Completa todos los campos obligatorios de envío.";
+        } else {
+            $_SESSION["shipping_data"] = $shipping;
+            header("Location: Checkout.php");
+            exit;
+        }
     }
 }
 ?>
@@ -148,6 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <p style="color:#b42318; margin-bottom:12px;"><?php echo htmlspecialchars($error); ?></p>
       <?php endif; ?>
       <form method="POST" style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token()); ?>">
         <div style="grid-column:1 / -1;">
           <label>Nombre y apellidos</label>
           <input type="text" name="nombre" value="<?php echo htmlspecialchars($shipping['nombre']); ?>" class="qty-input" style="width:100%; height:44px;" required>

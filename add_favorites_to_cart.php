@@ -1,12 +1,18 @@
 <?php
 session_start();
 include("conexion.php");
+include("csrf.php");
 
 header("Content-Type: application/json; charset=utf-8");
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(["ok" => false, "message" => "Método no permitido"]);
+    exit;
+}
+if (!csrf_validate($_POST['csrf_token'] ?? '')) {
+    http_response_code(403);
+    echo json_encode(["ok" => false, "message" => "Solicitud inválida"]);
     exit;
 }
 

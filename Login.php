@@ -2,12 +2,17 @@
 session_start();
 
 include("conexion.php");
+include("csrf.php");
 
 $error = "";
 $success = "";
 $redirect = isset($_GET['redirect']) && !empty($_GET['redirect']) ? $_GET['redirect'] : 'Homepage.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (!csrf_validate($_POST['csrf_token'] ?? '')) {
+        http_response_code(403);
+        $error = "Solicitud inválida. Recarga la página e inténtalo de nuevo.";
+    } else {
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
     $redirect = isset($_POST['redirect']) && !empty($_POST['redirect']) ? $_POST['redirect'] : $redirect;
@@ -77,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         $stmt->close();
     }
+    }
 }
 ?>
 
@@ -128,6 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <?php endif; ?>
 
       <form method="POST">
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token()); ?>">
         <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($redirect); ?>">
         <label>Correo electrónico</label>
         <div class="input">

@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("csrf.php");
 ?>
 <!doctype html>
 <html lang="es">
@@ -63,6 +64,7 @@ session_start();
 }
 </style>
 <script>
+const csrfToken = "<?php echo htmlspecialchars(csrf_token(), ENT_QUOTES, 'UTF-8'); ?>";
 document.addEventListener("DOMContentLoaded", function () {
   renderFavoritesGrid("#favoritesGrid", "#emptyFavorites");
 
@@ -89,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       const body = new URLSearchParams();
       body.set("ids", ids.join(","));
+      body.set("csrf_token", csrfToken);
 
       const res = await fetch("add_favorites_to_cart.php", {
         method: "POST",

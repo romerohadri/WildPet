@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("conexion.php");
+include("csrf.php");
 
 $checkout_error = '';
 $card_name = '';
@@ -9,6 +10,10 @@ $expiry = '';
 $ccv = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!csrf_validate($_POST['csrf_token'] ?? '')) {
+        http_response_code(403);
+        $checkout_error = 'Solicitud inválida. Recarga la página e inténtalo de nuevo.';
+    } else {
     if (isset($_POST['carrito_id'], $_POST['cantidad']) && !isset($_POST['remove_item']) && !isset($_POST['checkout'])) {
         $carrito_id = intval($_POST['carrito_id']);
         $cantidad = max(1, intval($_POST['cantidad']));
@@ -50,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: DireccionEnvio.php");
             exit;
         }
+    }
     }
 }
 
@@ -164,10 +170,12 @@ $total = $subtotal + $envio;
               </div>
               <div class="item__qty">
                 <form method="POST" class="qty-form">
+                  <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token()); ?>">
                   <input type="hidden" name="carrito_id" value="<?php echo intval($item['id']); ?>">
                   <input type="number" name="cantidad" value="<?php echo intval($item['cantidad']); ?>" min="1" class="qty-input" onchange="this.form.submit()">
                 </form>
                 <form method="POST" class="remove-form">
+                  <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token()); ?>">
                   <input type="hidden" name="carrito_id" value="<?php echo intval($item['id']); ?>">
                   <button type="submit" name="remove_item" class="trash" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
                 </form>
@@ -219,6 +227,7 @@ $total = $subtotal + $envio;
           <?php endif; ?>
 
           <form method="POST" class="checkout-form">
+            <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token()); ?>">
             <input type="hidden" name="checkout" value="1">
 
             <div class="payment-hint">Introduce tus datos de tarjeta para completar el pago.</div>

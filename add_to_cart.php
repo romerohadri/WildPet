@@ -1,10 +1,15 @@
 <?php
 session_start();
 include("conexion.php");
+include("csrf.php");
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: Homepage.php");
     exit;
+}
+if (!csrf_validate($_POST['csrf_token'] ?? '')) {
+    http_response_code(403);
+    die("Solicitud inválida.");
 }
 
 $producto_id = isset($_POST['producto_id']) ? intval($_POST['producto_id']) : 0;

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("conexion.php");
+include("csrf.php");
 
 if (!isset($_SESSION['usuario_id'])) {
     header("Location: Login.php?redirect=MiCuenta.php");
@@ -47,6 +48,10 @@ $error = "";
 $usuario_id = intval($_SESSION['usuario_id']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!csrf_validate($_POST['csrf_token'] ?? '')) {
+        http_response_code(403);
+        $error = "Solicitud inválida. Recarga la página e inténtalo de nuevo.";
+    } else {
     if (isset($_POST['save_profile'])) {
         $nombre = trim($_POST['nombre'] ?? '');
         $apellidos = trim($_POST['apellidos'] ?? '');
@@ -160,6 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($error === "") {
             $ok = "Dirección de envío actualizada.";
         }
+    }
     }
 }
 
@@ -279,6 +285,7 @@ if ($usuario && !empty($usuario["nombre"])) {
       <h3 style="margin:0 0 12px; font-size:22px;">Datos personales</h3>
       <?php if ($usuario): ?>
         <form method="POST" style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token()); ?>">
           <div>
             <label style="display:block; margin-bottom:6px; font-weight:600;">Nombre</label>
             <input type="text" name="nombre" value="<?php echo htmlspecialchars($nombrePartes[0]); ?>" style="width:100%; height:42px; border:1px solid #ededed; border-radius:8px; padding:0 12px;" required>
@@ -307,6 +314,7 @@ if ($usuario && !empty($usuario["nombre"])) {
     <section class="card" style="max-width:980px; padding:24px; margin-bottom:16px;">
       <h3 style="margin:0 0 12px; font-size:22px;">Dirección de facturación</h3>
       <form method="POST" style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token()); ?>">
         <div style="grid-column:1 / -1;">
           <label style="display:block; margin-bottom:6px; font-weight:600;">Dirección</label>
           <input type="text" name="direccion" value="<?php echo htmlspecialchars($facturacion['direccion']); ?>" style="width:100%; height:42px; border:1px solid #ededed; border-radius:8px; padding:0 12px;">
@@ -345,6 +353,7 @@ if ($usuario && !empty($usuario["nombre"])) {
     <section class="card" style="max-width:980px; padding:24px;">
       <h3 style="margin:0 0 12px; font-size:22px;">Dirección de envío</h3>
       <form method="POST" style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token()); ?>">
         <div style="grid-column:1 / -1;">
           <label style="display:block; margin-bottom:6px; font-weight:600;">Dirección</label>
           <input type="text" name="direccion_envio" value="<?php echo htmlspecialchars($envio['direccion']); ?>" style="width:100%; height:42px; border:1px solid #ededed; border-radius:8px; padding:0 12px;">

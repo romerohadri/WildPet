@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("conexion.php");
+include("csrf.php");
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     die("Producto no encontrado.");
@@ -113,6 +114,7 @@ $stmt->close();
         <div class="price">€<?php echo number_format($producto['precio'], 2); ?></div>
 
         <form method="POST" action="add_to_cart.php" class="buyrow">
+          <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token()); ?>">
           <input type="hidden" name="producto_id" value="<?php echo intval($producto['id']); ?>">
           <select name="cantidad" class="qty" aria-label="Cantidad">
             <?php for ($i = 1; $i <= 10; $i++): ?>

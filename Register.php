@@ -1,10 +1,15 @@
 <?php
 session_start();
 include("conexion.php");
+include("csrf.php");
 
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (!csrf_validate($_POST['csrf_token'] ?? '')) {
+        http_response_code(403);
+        $error = 'Solicitud inválida. Recarga la página e inténtalo de nuevo.';
+    } else {
     $nombre = trim($_POST['nombre']);
     $email = trim($_POST['email']);
     $password = $_POST['password'];
@@ -40,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->close();
         }
         $stmt_check->close();
+    }
     }
 }
 ?>
@@ -79,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <?php endif; ?>
 
       <form method="POST">
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token()); ?>">
         <label>Nombre</label>
         <div class="input">
           <i class="fa-regular fa-user"></i>

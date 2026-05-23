@@ -1,14 +1,21 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+
 $host = "localhost";
 $usuario = "root";
 $contrasena = "";
 $bd = "wildpet";
 
-$conn = new mysqli($host, $usuario, $contrasena, $bd);
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
+try {
+    $conn = new mysqli($host, $usuario, $contrasena, $bd);
+    $conn->set_charset("utf8");
+} catch (Exception $e) {
+    error_log("WildPet DB connection error: " . $e->getMessage());
+    http_response_code(500);
+    die("Error interno del servidor.");
 }
-
-$conn->set_charset("utf8");
 ?>

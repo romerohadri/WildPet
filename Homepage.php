@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("conexion.php");
+include("csrf.php");
 
 $productos_destacados = [];
 $sql = "SELECT * FROM productos WHERE destacado = 1 ORDER BY id LIMIT 2";
@@ -115,6 +116,7 @@ $stmt->close();
             <p class="price">€<?php echo number_format($producto['precio'], 2); ?></p>
             <div class="actions">
               <form method="POST" action="add_to_cart.php">
+                <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token()); ?>">
                 <input type="hidden" name="producto_id" value="<?php echo intval($producto['id']); ?>">
                 <input type="hidden" name="cantidad" value="1">
                 <button type="submit" class="btn small">Comprar</button>
@@ -134,6 +136,16 @@ $stmt->close();
       <?php else: ?>
         <p>No hay productos destacados disponibles.</p>
       <?php endif; ?>
+    </div>
+  </div>
+</section>
+
+<section class="home-contact">
+  <div class="container">
+    <div class="home-contact-card">
+      <h3>Contacto</h3>
+      <p><strong>Teléfono:</strong> +34 651 512 316</p>
+      <p><strong>Correo:</strong> hadri@wildpet.com</p>
     </div>
   </div>
 </section>
