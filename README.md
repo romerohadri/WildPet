@@ -20,7 +20,7 @@ Diseñar e implementar una aplicación web ecommerce aplicando conocimientos de:
 ## Tecnologías utilizadas
 - Backend: PHP (mysqli)
 - Base de datos: MariaDB / MySQL
-- Frontend: HTML5, CSS3, JavaScript
+- Frontend: HTML, CSS, JavaScript
 - Servidor local: XAMPP (Apache + MariaDB)
 - Control de versiones: Git + GitHub
 
@@ -114,37 +114,46 @@ Si no funciona, revisa en la tabla `usuarios` de tu base de datos.
 
 ```text
 wildpet/
-├── Homepage.php
-├── Perros.php
+├── Checkout.php
+├── DetailProduct.css
+├── DetailProduct.html
+├── DetailProduct.php
+├── DireccionEnvio.php
+├── DogProducts.css
 ├── Gatos.php
+├── Homepage.css
+├── Homepage.html
+├── Homepage.php
+├── Login.css
+├── Login.html
+├── Login.php
+├── Logout.php
+├── MiCuenta.php
+├── MisFavoritos.php
 ├── Pajaros.php
 ├── Peces.php
-├── DetailProduct.php
-├── Search.php
-├── ShoppingCart.php
-├── DireccionEnvio.php
-├── Checkout.php
-├── MisFavoritos.php
-├── MiCuenta.php
 ├── Pedidos.php
-├── Login.php
+├── Perros.php
+├── QUICK_START.md
+├── README.md
 ├── Register.php
-├── Logout.php
-├── add_to_cart.php
-├── add_favorites_to_cart.php
-├── conexion.php
-├── footer.php
+├── Search.php
+├── ShoppingCart.css
+├── ShoppingCart.html
+├── ShoppingCart.php
 ├── account-dropdown-links.php
 ├── account-menu.css
 ├── account-menu.js
+├── add_favorites_to_cart.php
+├── add_to_cart.php
+├── base de datos tabla categorías
+├── conexion.php
+├── csrf.php
 ├── favorites.js
-├── Homepage.css
-├── DogProducts.css
-├── ShoppingCart.css
-├── Login.css
-├── init_database.sql
+├── footer.php
 ├── img/
-└── img2/
+├── img2/
+└── init_database.sql
 ```
 
 ---
