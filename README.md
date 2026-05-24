@@ -1,4 +1,3 @@
-```md
 # WildPet - Tienda Online de Productos para Mascotas
 
 ## Descripción
@@ -223,4 +222,3 @@ Proyecto Intermodular - TFG DAW 2º Curso.
 ## Autor
 Hadrián Romero  Abelleira
 Repositorio: `https://github.com/romerohadri/WildPet`
-```
