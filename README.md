@@ -85,6 +85,12 @@ Abre en navegador:
 
 - Inicio: `http://localhost/wildpet/Homepage.php`
 
+Nota importante si descargas el ZIP de GitHub:
+- Al descomprimir, la carpeta puede llamarse `WildPet-main`.
+- En ese caso, accede usando el nombre real de la carpeta descargada:
+- `http://localhost/WildPet-main/Homepage.php`
+- Regla general: `http://localhost/NOMBRE_CARPETA/Homepage.php`
+
 ---
 
 ## Acceso de prueba
