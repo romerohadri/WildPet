@@ -318,12 +318,54 @@ hr{
 /*  RESPONSIVE  */
 @media(max-width:900px){
   .grid{grid-template-columns:repeat(2,1fr)}
+
+  .header-inner{
+    height:auto;
+    padding:10px 14px;
+    grid-template-columns:1fr auto;
+    grid-template-areas:
+      "logo icons"
+      "nav nav";
+    row-gap:10px;
+  }
+
+  .logo{grid-area:logo}
+  .icons{
+    grid-area:icons;
+    gap:12px;
+  }
+  .nav{
+    grid-area:nav;
+    justify-self:start;
+    gap:18px;
+    flex-wrap:wrap;
+  }
 }
 
 @media(max-width:600px){
   .grid{grid-template-columns:1fr}
   .footer-inner{padding:18px 16px}
   .footer-line{font-size:13px; gap:8px; flex-wrap:wrap;}
+
+  .header-inner{
+    padding:10px 10px;
+  }
+
+  .nav{
+    gap:14px;
+  }
+
+  .nav a{
+    font-size:12px;
+  }
+
+  .icons{
+    gap:10px;
+  }
+
+  .icons i{
+    font-size:16px;
+  }
 }
 
 /* Footer one-line final override */

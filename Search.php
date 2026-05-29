@@ -31,35 +31,80 @@ if ($query !== '') {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="DogProducts.css">
   <link rel="stylesheet" href="account-menu.css">
   <style>
-    body { font-family: Inter, sans-serif; background: #f4f5fb; margin: 0; }
-    .header { background: #fff; border-bottom: 1px solid #e6e9f4; }
-    .header-inner { max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .logo { width: 140px; display: block; }
-    .nav { display: flex; gap: 18px; }
-    .nav a { color: #4a4f68; text-decoration: none; font-weight: 600; }
-    .icons { display: flex; gap: 18px; align-items: center; }
-    .icons a { color: #4a4f68; text-decoration: none; font-size: 18px; }
-    .page { max-width: 1200px; margin: 0 auto; padding: 30px 24px; }
+    :root { --green:#86c440; --border:#ededed; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: Inter, sans-serif;
+      background: #f4f5fb;
+      margin: 0;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .header { background: #fff; border-bottom: 1px solid var(--border); }
+    .header-inner { width: 100%; height: 60px; padding: 0 32px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+    .logo { width: 26px; justify-self: start; display: block; }
+    .nav { display: flex; gap: 22px; justify-self: center; }
+    .nav a { text-decoration: none; color: #222; font-size: 13px; font-weight: 500; }
+    .icons { display: flex; gap: 14px; align-items: center; justify-self: end; }
+    .icons a { color: #222; text-decoration: none; font-size: 18px; }
+    .icons i { transition: color .2s ease, transform .2s ease; }
+    .icons i:hover { color: var(--green); transform: scale(1.08); }
+    .page { width: min(1200px, 92%); margin: 0 auto; padding: 30px 0; flex: 1; }
     .search-card { background: #fff; border-radius: 18px; padding: 28px; box-shadow: 0 20px 50px rgba(43, 52, 83, 0.08); }
     .search-card h1 { margin: 0 0 18px; font-size: 32px; color: #14183e; }
     .search-form { display: flex; gap: 14px; flex-wrap: wrap; }
     .search-form input { flex: 1 1 220px; padding: 16px 18px; border: 1px solid #d9def3; border-radius: 14px; background: #fafbff; font-size: 15px; color: #262b42; }
-    .search-form button { padding: 16px 24px; background: #7ed957; color: #fff; border: none; border-radius: 14px; font-weight: 700; cursor: pointer; }
+    .search-form button { padding: 16px 24px; background: #86c440; color: #fff; border: none; border-radius: 14px; font-weight: 700; cursor: pointer; }
     .results { margin-top: 28px; }
-    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-    .card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 18px 40px rgba(43, 52, 83, 0.08); }
-    .card-img img { width: 100%; display: block; }
-    .card-body { padding: 18px; }
+    .grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); justify-items: center; }
+    .card { width: 100%; max-width: 360px; background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 18px 40px rgba(43, 52, 83, 0.08); display: flex; flex-direction: column; }
+    .card-img { height: 230px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 14px; }
+    .card-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .card-body { padding: 18px; display: flex; flex-direction: column; flex: 1; }
     .card-body h3 { margin: 0 0 10px; font-size: 18px; color: #14183e; }
     .card-body p { margin: 0 0 12px; color: #6e728c; font-size: 14px; line-height: 1.6; }
     .card-body .price { margin: 0 0 16px; font-size: 18px; font-weight: 700; color: #14183e; }
-    .card-body .actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-    .card-body .btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; background: #7ed957; color: white; border-radius: 12px; text-decoration: none; font-weight: 700; }
+    .card-body .actions { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .card-body .btn { display: inline-flex; align-items: center; justify-content: center; flex: 1; padding: 10px 16px; background: #86c440; color: white; border-radius: 12px; text-decoration: none; font-weight: 700; }
     .fav-btn { width: 36px; height: 36px; border: 1px solid #d9def3; border-radius: 12px; background: #fff; color: #9ca3af; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
     .fav-btn.active { color: #e11d48; }
     .empty { padding: 32px; text-align: center; color: #6e728c; }
+
+    @media (max-width: 900px) {
+      .header-inner {
+        padding: 10px 14px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+          "logo icons"
+          "nav nav";
+        row-gap: 10px;
+        align-items: center;
+      }
+      .logo { grid-area: logo; }
+      .icons { grid-area: icons; gap: 12px; }
+      .nav {
+        grid-area: nav;
+        justify-self: start;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header-inner { padding: 10px 10px; }
+      .nav { gap: 14px; }
+      .nav a { font-size: 12px; }
+      .icons { gap: 10px; }
+      .icons a { font-size: 16px; }
+    }
+
+
   </style>
 </head>
 <body>
@@ -132,6 +177,8 @@ if ($query !== '') {
     </div>
   </div>
 </main>
+
+<?php include('footer.php'); ?>
 
 <script src="favorites.js"></script>
 <script>

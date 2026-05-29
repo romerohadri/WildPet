@@ -8,7 +8,7 @@ $sql = "SELECT p.*
           SELECT MIN(id) AS id
           FROM productos
           WHERE id_categoria = 1
-            AND id NOT IN (5, 6, 13)
+            AND id NOT IN (4, 5, 6, 13)
           GROUP BY nombre
         ) unicos ON p.id = unicos.id";
 $resultado = $conn->query($sql);

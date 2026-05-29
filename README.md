@@ -46,6 +46,10 @@ Diseñar e implementar una aplicación web ecommerce aplicando conocimientos de:
 
 ## Instalación (XAMPP)
 
+### 0) Descargar XAMPP (si no lo tienes instalado)
+Descárgalo desde la web oficial:
+- https://www.apachefriends.org/es/index.html
+
 ### 1) Colocar el proyecto en htdocs
 Copia la carpeta del proyecto dentro de:
 
